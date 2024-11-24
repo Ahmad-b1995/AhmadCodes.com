@@ -2,7 +2,7 @@
 import axiosInstance, { fetchData } from "./axios.config";
 
 // Function to get all articles
-export async function getAllPosts(options?: any): Promise<string> {
+export async function getAllPosts(options?: any): Promise<BlogData> {
   return fetchData<any>(`${process.env.NEXT_PUBLIC_BASE_URL}/article`, {
     method: "GET",
     ...options,

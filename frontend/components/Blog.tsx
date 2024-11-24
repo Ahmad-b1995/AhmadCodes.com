@@ -1,8 +1,13 @@
 import React from "react";
 import NavigationWrapper from "./NavigationWrapper";
 import Image from "next/image";
+import { getAllPosts } from "@/http/article.http";
 
-const Blog = () => {
+const Blog = async () => {
+  const articles = await getAllPosts().then((data) => {
+    return data.articles;
+  });
+
   return (
     <NavigationWrapper elementName="blog">
       <section
@@ -17,81 +22,40 @@ const Blog = () => {
         </div>
         <div>
           <ul className="group/list">
-            {/* Article 1 */}
-            <li className="mb-12">
-              <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-blue-100/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                <div className="z-10 sm:order-2 sm:col-span-6">
-                  <h3> 
-                    <a
-                      className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-blue-300 focus-visible:text-blue-300 group/link text-base"
-                      href="https://your-blog-link-1.com"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      aria-label="Article 1 (opens in a new tab)"
-                    >
-                      <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                      <span>Understanding Tokenomics in Crypto</span>
-                    </a>
-                  </h3>
-                  <p className="mt-2 text-sm leading-normal">
-                    An in-depth guide to tokenomics, exploring the principles
-                    behind token supply, demand, and distribution. Learn how to
-                    assess a cryptocurrency&apos;s potential through its tokenomics
-                    model.
-                  </p>
+          {articles.map((article) => (
+              <li key={article.id} className="mb-12">
+                <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                  <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-blue-100/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                  <div className="z-10 sm:order-2 sm:col-span-6">
+                    <h3>
+                      <a
+                        className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-blue-300 focus-visible:text-blue-300 group/link text-base"
+                        href={article.id.toString()}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label={`${article.title} (opens in a new tab)`}
+                      >
+                        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                        <span>{article.title}</span>
+                      </a>
+                    </h3>
+                    <p className="mt-2 text-sm leading-normal">
+                      {article.description}
+                    </p>
+                  </div>
+                  <Image
+                    alt={article.image.alt}
+                    loading="lazy"
+                    width={article.image.width}
+                    height={article.image.height}
+                    decoding="async"
+                    className="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                    style={{ color: "transparent" }}
+                    src={article.image.src}
+                  />
                 </div>
-                <Image
-                  alt="Tokenomics article"
-                  loading="lazy"
-                  width="200"
-                  height="48"
-                  decoding="async"
-                  className="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                  style={{ color: "transparent" }}
-                  src="/_next/image?url=%2Fimages%2Fblog%2Ftokenomics.png&w=640&q=75"
-                />
-              </div>
-            </li>
-
-            {/* Article 2 */}
-            <li className="mb-12">
-              <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-blue-100/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                <div className="z-10 sm:order-2 sm:col-span-6">
-                  <h3>
-                    <a
-                      className="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-blue-300 focus-visible:text-blue-300 group/link text-base"
-                      href="https://your-blog-link-2.com"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      aria-label="Article 2 (opens in a new tab)"
-                    >
-                      <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                      <span>
-                        Building Scalable Apps with Next.js and NestJS
-                      </span>
-                    </a>
-                  </h3>
-                  <p className="mt-2 text-sm leading-normal">
-                    A technical walkthrough on building scalable full-stack
-                    applications using Next.js for the front-end and NestJS for
-                    the back-end. Covers best practices, patterns, and
-                    deployment strategies.
-                  </p>
-                </div>
-                <Image
-                  alt="Next.js and NestJS article"
-                  loading="lazy"
-                  width="200"
-                  height="48"
-                  decoding="async"
-                  className="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                  style={{ color: "transparent" }}
-                  src="/_next/image?url=%2Fimages%2Fblog%2Fnext-nest.png&w=640&q=75"
-                />
-              </div>
-            </li>
+              </li>
+            ))}
           </ul>
         </div>
       </section>

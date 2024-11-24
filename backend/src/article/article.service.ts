@@ -9,7 +9,21 @@ export class ArticleService {
   }
 
   findAll() {
-    return `This action returns all article`;
+    return {
+      articles: [
+        {
+          id: 1 ,
+          title: "JavaScript Hoisting",
+          description: "JS hoisting rules, pitfalls and uses for let, var, const, and functions",
+          image: {
+            alt: "Tokenomics article",
+            src: "/_next/image?url=%2Fimages%2Fblog%2Ftokenomics.png&w=640&q=75",
+            width: 200,
+            height: 48
+          }
+        }
+      ]
+    };
   }
 
   findOne(id: number) {
