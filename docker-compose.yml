@@ -1,6 +1,9 @@
 services:
   # Next.js Application Service
   ahmadcodes_nextjs:
+    build:
+      context: ./frontend 
+      dockerfile: Dockerfile 
     image: ahmadcodes_nextjs:latest
     container_name: ahmadcodes_nextjs
     networks:
@@ -9,7 +12,7 @@ services:
       - /app/node_modules
       - /app/.next
     restart: always
-    env_file: .env.local
+    env_file: .env.local.production
     depends_on:
       - blog_nestjs
     labels:
@@ -23,6 +26,9 @@ services:
 
   # NestJS API Service
   blog_nestjs:
+    build:
+      context: ./backend  
+      dockerfile: Dockerfile  
     image: nestjs_blog:latest
     container_name: nestjs_blog
     networks:
@@ -30,7 +36,7 @@ services:
     volumes:
       - ./uploads:/uploads
     restart: always
-    env_file: .env.local
+    env_file: .env.local.production
     command: node dist/main.js
     stdin_open: true
     tty: true
@@ -55,4 +61,3 @@ networks:
   ahmadCodes_intranet:
     name: ahmadCodes_intranet
     driver: bridge
-

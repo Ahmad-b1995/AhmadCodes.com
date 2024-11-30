@@ -5,6 +5,7 @@ import { getAllPosts } from "@/http/article.http";
 
 const Blog = async () => {
   const articles = await getAllPosts().then((data) => {
+    console.log(data.articles)
     return data.articles;
   });
 

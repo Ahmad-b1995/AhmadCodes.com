@@ -1,0 +1,57 @@
+version: "3.9"
+services:
+  ahmadcodes_nextjs:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: dev
+    image: ahmadcodes_nextjs:dev
+    container_name: ahmadcodes_nextjs_dev
+    networks:
+      - ahmadCodes_intranet
+    volumes:
+      - ./frontend:/app 
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    env_file: .env.local.development
+    command: ["yarn", "dev"]
+    depends_on:
+      - blog_nestjs
+
+  blog_nestjs:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    image: nestjs_blog:dev
+    container_name: nestjs_blog_dev
+    networks:
+      - ahmadCodes_intranet
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - "3001:3001"
+    env_file: .env.local.development
+    command: ["yarn", "start:dev"]
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    container_name: postgres_dev
+    networks:
+      - ahmadCodes_intranet
+    ports:
+      - "5432:5432"
+    env_file: .env.local.development
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  ahmadCodes_intranet:
+    driver: bridge
+
+volumes:
+  postgres_data:
