@@ -1,0 +1,30 @@
+{
+  "name": "ahmadcodes.com",
+  "version": "1.0.0",
+  "description": "My Personal Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:dev": "docker compose -f docker-compose.dev.yml up",
+    "docker:prod": "docker compose -f docker-compose.yml up",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmad-b1995/AhmadCodes.com.git",
+    "check-secrets": "node check-secrets.js"
+  },
+  "keywords": [
+    "personal",
+    "website"
+  ],
+  "author": "Ahmad Baghereslami",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ahmad-b1995/AhmadCodes.com/issues"
+  },
+  "homepage": "https://github.com/Ahmad-b1995/AhmadCodes.com#readme",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
