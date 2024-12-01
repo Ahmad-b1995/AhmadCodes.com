@@ -7,12 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docker:dev": "docker compose -f docker-compose.dev.yml up",
     "docker:prod": "docker compose -f docker-compose.yml up",
-    "prepare": "husky"
+    "check-secrets": "node check-secrets.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ahmad-b1995/AhmadCodes.com.git",
-    "check-secrets": "node check-secrets.js"
+    "url": "git+https://github.com/Ahmad-b1995/AhmadCodes.com.git"
   },
   "keywords": [
     "personal",
