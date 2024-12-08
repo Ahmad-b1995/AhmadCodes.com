@@ -1,13 +1,13 @@
 services:
   # Next.js Application Service
   ahmadcodes_nextjs:
-    image: ahmadcodes_nextjs:latest
+    build:
+      context: ./frontend
+      target: production
+    # image: ahmadcodes_nextjs:1.0.0
     container_name: ahmadcodes_nextjs
     networks:
       - ahmadCodes_intranet
-    volumes:
-      - /app/node_modules
-      - /app/.next
     restart: always
     env_file: .env.local
     depends_on:
@@ -23,7 +23,10 @@ services:
 
   # NestJS API Service
   blog_nestjs:
-    image: nestjs_blog:latest
+    build:
+      context: ./backend
+      target: production
+    image: blog_nestjs:1.0.0
     container_name: nestjs_blog
     networks:
       - ahmadCodes_intranet
@@ -37,15 +40,15 @@ services:
 
   # Nginx Reverse Proxy Service
   nginx:
-    image: nginx:latest
+    image: nginx:1.25.0
     container_name: nginx_reverse_proxy
     networks:
       - ahmadCodes_intranet
     ports:
       - "8443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf  # Mount secure configuration
-      - ./ssl:/etc/nginx/ssl  # Mount SSL certificates
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
     depends_on:
       - ahmadcodes_nextjs
       - blog_nestjs
@@ -55,4 +58,3 @@ networks:
   ahmadCodes_intranet:
     name: ahmadCodes_intranet
     driver: bridge
-
