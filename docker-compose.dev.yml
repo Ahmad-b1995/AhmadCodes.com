@@ -1,0 +1,63 @@
+services:
+  ahmadcodes_frontend_dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: ahmadcodes_frontend_dev
+    networks:
+      - ahmadCodes_intranet_dev
+    restart: always
+    env_file: .env.local.dev
+    depends_on:
+      - ahmadcodes_backend_dev
+    labels:
+      - "service=app"
+      - "stage=dev"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "1560:3000"  
+    command: pnpm dev
+
+  ahmadcodes_backend_dev:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: nestjs_blog_dev
+    networks:
+      - ahmadCodes_intranet_dev
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - ./uploads_dev:/uploads
+    restart: always
+    env_file: .env.local.dev
+    stdin_open: true
+    tty: true
+    ports:
+      - "1561:3100"
+    command: pnpm start:dev
+
+  postgres_dev:
+    image: postgres:15
+    container_name: postgres_dev
+    networks:
+      - ahmadCodes_intranet_dev
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+    env_file: .env.local.dev
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  ahmadCodes_intranet_dev:
+    name: ahmadCodes_intranet_dev
+    driver: bridge
+
+volumes:
+  postgres_data_dev:

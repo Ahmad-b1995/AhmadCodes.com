@@ -1,0 +1,46 @@
+# Ignore node_modules and other dependencies
+node_modules
+/node_modules
+**/node_modules
+**/**/node_modules
+.pnp
+.pnp.js
+.cache
+
+# Local environment files
+# .env
+# .env.local
+# .env.development.local
+# .env.test.local
+# .env.production.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js build output
+out
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Git files
+.git
+.gitignore
+
+# IDE or editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Other temporary files
+tmp
+dist
+coverage

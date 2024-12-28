@@ -1,0 +1,81 @@
+services:
+  # Next.js Application Service
+  ahmadcodes_frontend_test:
+    build:
+      context: ./frontend
+    container_name: ahmadcodes_frontend_test
+    networks:
+      - ahmadCodes_intranet_test
+    restart: always
+    env_file: .env.local.test
+    depends_on:
+      - ahmadcodes_backend_test
+    labels:
+      - "service=app"
+      - "stage=test"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'node -e ''require("http").get("http://localhost:3000/", (res) => { if (res.statusCode === 200) process.exit(0); else process.exit(1); })''',
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    command: pnpm start
+
+  # NestJS API Service
+  ahmadcodes_backend_test:
+    build:
+      context: ./backend
+    container_name: ahmadcodes_backend_test
+    networks:
+      - ahmadCodes_intranet_test
+    volumes:
+      - ./uploads_test:/uploads
+    restart: always
+    env_file: .env.local.test
+    stdin_open: true
+    tty: true
+    depends_on:
+      - postgres_test
+    command: node dist/main.js
+
+  # PostgreSQL Service
+  postgres_test:
+    image: postgres:15
+    container_name: postgres_prod_test
+    networks:
+      - ahmadCodes_intranet_test
+    volumes:
+      - postgres_data_test:/var/lib/postgresql/data
+    env_file: .env.local.test
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Nginx Reverse Proxy Service
+  nginx_test:
+    image: nginx:latest
+    container_name: nginx_reverse_proxy_test
+    networks:
+      - ahmadCodes_intranet_test
+    ports:
+      - "2350:80"  
+    volumes:
+      - ./nginx_test.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - ahmadcodes_frontend_test
+      - ahmadcodes_backend_test
+    restart: always
+
+networks:
+  ahmadCodes_intranet_test:
+    name: ahmadCodes_intranet_test
+    driver: bridge
+
+volumes:
+  postgres_data_test:

@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # Next.js Application Service
+  ahmadcodes_frontend_prod:
+    build:
+      context: ./frontend
+    container_name: ahmadcodes_frontend_prod
+    networks:
+      - ahmadCodes_intranet_prod
+    restart: always
+    env_file: .env.local.production
+    depends_on:
+      - ahmadcodes_backend_prod
+    labels:
+      - "service=frontend"
+      - "stage=production"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'node -e ''require("http").get("http://localhost:3000/", (res) => { if (res.statusCode === 200) process.exit(0); else process.exit(1); })''',
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    command: pnpm start
+
+  # NestJS API Service
+  ahmadcodes_backend_prod:
+    build:
+      context: ./backend
+    container_name: ahmadcodes_backend_prod
+    networks:
+      - ahmadCodes_intranet_prod
+    volumes:
+      - ./uploads:/uploads
+    restart: always
+    env_file: .env.local.production
+    stdin_open: true
+    tty: true
+    depends_on:
+      - postgres_prod
+    command: node dist/main.js
+
+  # PostgreSQL Service
+  postgres_prod:
+    image: postgres:15
+    container_name: postgres_prod
+    networks:
+      - ahmadCodes_intranet_prod
+    volumes:
+      - postgres_data_prod:/var/lib/postgresql/data
+    env_file: .env.local.production
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Nginx Reverse Proxy Service
+  nginx_prod:
+    image: nginx:latest
+    container_name: nginx_reverse_proxy_prod
+    networks:
+      - ahmadCodes_intranet_prod
+    ports:
+      - "8443:443"
+    volumes:
+      - ./nginx_production.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - ahmadcodes_frontend_prod
+      - ahmadcodes_backend_prod
+    restart: always
+
+networks:
+  ahmadCodes_intranet_prod:
+    name: ahmadCodes_intranet_prod
+    driver: bridge
+
+volumes:
+  postgres_data_prod:
