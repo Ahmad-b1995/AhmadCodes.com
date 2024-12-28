@@ -15,7 +15,7 @@ const ExperienceSection = () => {
             Experience
           </h2>
         </div>
-        <div>
+        <div >
           <ol className="group/list">
             {/* Experience 1: DexTrading */}
             <li className="mb-12">
