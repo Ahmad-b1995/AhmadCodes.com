@@ -1,7 +1,6 @@
 import React from 'react';
 import AboutSection from './AboutSection';
 import ExperienceSection from './ExperienceSection';
-import ProjectSection from './ProjectSection';
 import Blog from './Blog';
 
 const Main = () => {
