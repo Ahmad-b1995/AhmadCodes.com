@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body
         className="scroll-smooth leading-relaxed text-slate-600 selection:bg-blue-100 selection:text-teal-900
-         mx-auto min-h-screen max-w-screen-2xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0 antialiased"
+         mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0 antialiased"
       >
         {children}
       </body>

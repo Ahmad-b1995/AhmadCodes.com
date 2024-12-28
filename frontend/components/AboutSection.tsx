@@ -25,10 +25,7 @@ const AboutSection = () => {
             Problem-solving is my happy place. Throw a challenge my way, and I'll not only find a solution but likely enjoy the process a little too much! Analytical thinking comes naturally, but so does creativity-an essential trait when you've spent as much time in startups as I have. Navigating the fast-paced, ever-changing world of entrepreneurship has sharpened my ability to adapt quickly, deliver effectively, and make a meaningful impact in lean, high-energy environments.
           </p>
           <p className="mb-4">
-            Beyond code, I bring a strong design sensibility to the table. A background in UI/UX design has given me an eye to create intuitive and visually appealing interfaces. For me, good design is not just about looking good; it is about crafting seamless user experiences that keep people engaged, coming back for more. This, married with my technical expertise, allows me to bridge the gap between form and function with ease.
-          </p>
-          <p className="mb-4">
-            Ultimately, I look at every project as an opportunity to leave something behind, be it shaping the architectural vision, mentoring a team, or just writing clean and efficient code. I bring passion and commitment to everything I do. Startups can be chaotic, but that's where the magic happens for me, and I wouldn't have it any other way.
+            Beyond code, I have an eye for the design of UI/UX, where intuitive and aesthetically engaging user interfaces are hooked together by great form and function. Every project is an opportunity to shape architecture, mentor teams, and craft clean, efficient code. I love the dynamic energy of startups, bringing passion and commitment to every challenge and opportunity.
           </p>
         </div>
       </section>

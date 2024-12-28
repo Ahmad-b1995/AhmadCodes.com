@@ -21,9 +21,9 @@ const ExperienceSection = () => {
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 hover:bg-blue-100/50 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg rounded-md p-4">
                 <header
                   className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2"
-                  aria-label="July 2023 to Present"
+                  aria-label="Nov 2023 to Present"
                 >
-                  July 2023 — Present
+                  Nov 2023 — Present
                 </header>
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-400">
@@ -33,22 +33,25 @@ const ExperienceSection = () => {
                         href="https://dextrading.com"
                         target="_blank"
                         rel="noreferrer noopener"
-                        aria-label="Full Stack Developer & Designer at DexTrading (opens in a new tab)"
+                        aria-label="Full Stack Developer at DexTrading (opens in a new tab)"
                       >
                         <span>
-                          Full Stack Developer & Designer · DexTrading
+                          Full Stack Developer · DexTrading
                         </span>
                       </a>
                     </div>
                   </h3>
-                  <p className="mt-2 text-sm leading-normal">
-                    Led the complete redevelopment of DexTrading&apos;s website using
-                    Next.js, enhancing code quality and user experience.
-                    Developed the front-end from scratch using Figma and Zeplin
-                    for design. Created a new backend for the blog using NestJS
-                    and built an admin panel with React for streamlined content
-                    management.
-                  </p>
+                  <ul className="list-outside space-y-1 mt-2 text-sm leading-normal">
+                    <li>
+                      Full redevelopment of DexTrading&apos;s website using Next.js
+                    </li>
+                    <li>
+                      Developed backend using Node.jsNestJS & Python/Django
+                    </li>
+                    <li>
+                      Built an admin panel with React for content management.
+                    </li>
+                  </ul>
                   <ul
                     className="mt-2 flex flex-wrap"
                     aria-label="Technologies used"
@@ -65,17 +68,17 @@ const ExperienceSection = () => {
                     </li>
                     <li className="mr-1.5 mt-2">
                       <div className="flex items-center rounded-full bg-blue-400/10 px-3 py-1 text-xs font-medium leading-5 text-blue-300">
-                        NestJS
+                        Node.js/NestJS
+                      </div>
+                    </li>
+                    <li className="mr-1.5 mt-2">
+                      <div className="flex items-center rounded-full bg-blue-400/10 px-3 py-1 text-xs font-medium leading-5 text-blue-300">
+                        Python/Django
                       </div>
                     </li>
                     <li className="mr-1.5 mt-2">
                       <div className="flex items-center rounded-full bg-blue-400/10 px-3 py-1 text-xs font-medium leading-5 text-blue-300">
                         Figma
-                      </div>
-                    </li>
-                    <li className="mr-1.5 mt-2">
-                      <div className="flex items-center rounded-full bg-blue-400/10 px-3 py-1 text-xs font-medium leading-5 text-blue-300">
-                        Zeplin
                       </div>
                     </li>
                   </ul>
@@ -88,9 +91,9 @@ const ExperienceSection = () => {
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 hover:bg-blue-100/50 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg rounded-md p-4">
                 <header
                   className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2"
-                  aria-label="July to November 2023"
+                  aria-label="June 2023 to Nov 2023"
                 >
-                  July 2023 — Nov 2023
+                  June 2023 — Nov 2023
                 </header>
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-400">
@@ -102,16 +105,21 @@ const ExperienceSection = () => {
                         rel="noreferrer noopener"
                         aria-label="Front End Developer at Azer Tech (opens in a new tab)"
                       >
-                        <span>Front End Developer · Azer Tech</span>
+                        <span>Full Stack Developer · Azer Tech</span>
                       </a>
                     </div>
                   </h3>
-                  <p className="mt-2 text-sm leading-normal">
-                    Provided web development solutions using Next.js, React, and
-                    TypeScript. Collaborated with design and back-end teams to
-                    optimize application performance and create seamless user
-                    experiences.
-                  </p>
+                  <ul className="list-outside space-y-1 mt-2 text-sm leading-normal">
+                    <li>
+                      Developed a multi-language Next.js application
+                    </li>
+                    <li>
+                      Created a CI/CD pipeline by setting up Docker and GitLab
+                    </li>
+                    <li>
+                      Built an admin panel with React for content management.
+                    </li>
+                  </ul>
                   <ul
                     className="mt-2 flex flex-wrap"
                     aria-label="Technologies used"
@@ -124,6 +132,16 @@ const ExperienceSection = () => {
                     <li className="mr-1.5 mt-2">
                       <div className="flex items-center rounded-full bg-blue-400/10 px-3 py-1 text-xs font-medium leading-5 text-blue-300">
                         React
+                      </div>
+                    </li>
+                    <li className="mr-1.5 mt-2">
+                      <div className="flex items-center rounded-full bg-blue-400/10 px-3 py-1 text-xs font-medium leading-5 text-blue-300">
+                        Node.js
+                      </div>
+                    </li>
+                    <li className="mr-1.5 mt-2">
+                      <div className="flex items-center rounded-full bg-blue-400/10 px-3 py-1 text-xs font-medium leading-5 text-blue-300">
+                        NestJS
                       </div>
                     </li>
                     <li className="mr-1.5 mt-2">
@@ -141,9 +159,9 @@ const ExperienceSection = () => {
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 hover:bg-blue-100/50 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg rounded-md p-4">
                 <header
                   className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2"
-                  aria-label="Dec 2022 to July 2023"
+                  aria-label="June 2022 — July 2023"
                 >
-                  Dec 2022 — July 2023
+                  June 2022 — July 2023
                 </header>
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-400">
@@ -155,16 +173,15 @@ const ExperienceSection = () => {
                         rel="noreferrer noopener"
                         aria-label="Front End Developer at Chargoon (opens in a new tab)"
                       >
-                        <span>Front End Developer · Chargoon</span>
+                        <span>Full Stack Developer · Chargoon</span>
                       </a>
                     </div>
                   </h3>
-                  <p className="mt-2 text-sm leading-normal">
-                    Developed HR automation software pages and components,
-                    increasing efficiency by 15%. Led code reviews to ensure
-                    best practices and collaborated with back-end developers to
-                    design and implement API endpoints.
-                  </p>
+                  <ul className="list-outside space-y-1 mt-2 text-sm leading-normal">
+                    <li>Built and maintained React components for frontend</li>
+                    <li>Developed backend logic using .NET framework</li>
+                    <li>Optimized JavaScript codebase by consolidating functions</li>
+                  </ul>
                   <ul
                     className="mt-2 flex flex-wrap"
                     aria-label="Technologies used"
@@ -194,9 +211,9 @@ const ExperienceSection = () => {
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 hover:bg-blue-100/50 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg rounded-md p-4">
                 <header
                   className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2"
-                  aria-label="Sep 2021 to Nov 2022"
+                  aria-label="Feb 2021 — June 2022"
                 >
-                  Sep 2021 — Nov 2022
+                  Feb 2021 — June 2022
                 </header>
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-400">
@@ -212,12 +229,14 @@ const ExperienceSection = () => {
                       </a>
                     </div>
                   </h3>
-                  <p className="mt-2 text-sm leading-normal">
-                    Developed a PWA-compatible fitness video streaming
-                    application, enhancing user engagement by 20%. Built a CMS
-                    for content management, streamlining the video upload
-                    process by 30%.
-                  </p>
+                  <ul className="list-outside space-y-1 mt-2 text-sm leading-normal">
+                    <li>Built a PWA fitness platform using Angular</li>
+                    <li>Dockerized Angular app for faster deployments</li>
+                    <li>Designed a CMS for streamlined video uploads</li>
+                    <li>Conducted A/B testing to optimize performance</li>
+                    <li>Implemented HLS for stable video playback</li>
+                  </ul>
+
                   <ul
                     className="mt-2 flex flex-wrap"
                     aria-label="Technologies used"
@@ -247,9 +266,9 @@ const ExperienceSection = () => {
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 hover:bg-blue-100/50 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg rounded-md p-4">
                 <header
                   className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2"
-                  aria-label="Sep 2020 to Nov 2021"
+                  aria-label="Sep 2019 to Nov 2020"
                 >
-                  Sep 2020 — Nov 2021
+                  Sep 2019 — Nov 2020
                 </header>
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-400">
@@ -257,12 +276,10 @@ const ExperienceSection = () => {
                       <span>Full Stack Developer · TivanCar</span>
                     </div>
                   </h3>
-                  <p className="mt-2 text-sm leading-normal">
-                    Developed a full-stack auto-parts e-commerce platform using
-                    Vue.js, Node.js, and MongoDB. Implemented Docker & Docker
-                    Compose for efficient development and deployment workflows.
-                    Assisted in staffing and training new developers.
-                  </p>
+                  <ul className="list-outside space-y-1 mt-2 text-sm leading-normal">
+                    <li>Built full-stack services with Vue.js and Express.js</li>
+                    <li>Designed user-focused UI through research and testing</li>
+                  </ul>
                   <ul
                     className="mt-2 flex flex-wrap"
                     aria-label="Technologies used"
@@ -297,9 +314,9 @@ const ExperienceSection = () => {
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 hover:bg-blue-100/50 hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] hover:drop-shadow-lg rounded-md p-4">
                 <header
                   className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2"
-                  aria-label="Aug 2019 to Oct 2020"
+                  aria-label="Aug 2018 — Nov 2019"
                 >
-                  Aug 2019 — Oct 2020
+                  Aug 2018 — Nov 2019
                 </header>
                 <div className="z-10 sm:col-span-6">
                   <h3 className="font-medium leading-snug text-slate-400">
@@ -307,12 +324,11 @@ const ExperienceSection = () => {
                       <span>Full Stack Developer · GamAlef</span>
                     </div>
                   </h3>
-                  <p className="mt-2 text-sm leading-normal">
-                    Developed a full-stack book e-commerce platform,
-                    contributing to a 25% increase in online sales. Provided
-                    front-end and UX design consulting, utilizing Tailwind CSS
-                    and Docker for scalable development.
-                  </p>
+                  <ul className="list-outside space-y-1 mt-2 text-sm leading-normal">
+                    <li>Built full-stack components with Vue.js and Node.js</li>
+                    <li>Designed intuitive UI with UI/UX research</li>
+                  </ul>
+
                   <ul
                     className="mt-2 flex flex-wrap"
                     aria-label="Technologies used"
