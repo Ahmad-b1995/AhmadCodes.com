@@ -1,6 +1,6 @@
 // Header.jsx
 import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import NavigationLinks from "./NavigationLinks";
 import Link from "next/link";
 
@@ -12,11 +12,11 @@ const Header = () => {
           <Link href="/">Ahmad Baghereslami</Link>
         </h1>
         <h2 className="mt-3 text-lg font-medium tracking-tight text-[#2079C7] sm:text-xl">
-          Full-Stack Developer
+          Full Stack Developer
         </h2>
         <p className="mt-4 max-w-xs leading-normal">
           Building scalable full-stack applications with a strong foundation in
-          front-end development. Experienced in React, NestJS, and Linux,
+          front-end development. Experienced in React, Node.js, and Python,
           focused on creating efficient and maintainable code.
         </p>
         <NavigationLinks /> 
@@ -47,15 +47,15 @@ const Header = () => {
           </Link>
         </li>
         <li className="mr-5 text-xs shrink-0">
-          <Link
+        <Link
             className="block hover:text-slate-300"
-            href="https://x.com/AhmadEslamii"
+            href="mailto:ahmad.b1995@gmail.com"
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="Twitter (opens in a new tab)"
-            title="Twitter"
+            aria-label="Email (opens in a new tab)"
+            title="Email"
           >
-            <FaTwitter size={20} />
+            <FaEnvelope size={20} />
           </Link>
         </li>
       </ul>
