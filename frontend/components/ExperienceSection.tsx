@@ -1,5 +1,6 @@
 import React from "react";
 import NavigationWrapper from "./NavigationWrapper";
+import Link from "next/link";
 
 const ExperienceSection = () => {
   return (
@@ -359,9 +360,9 @@ const ExperienceSection = () => {
             </li>
           </ol>
           <div className="mt-12">
-            <a
+            <Link
               className="inline-flex items-baseline leading-tight hover:text-blue-300 focus-visible:text-blue-300 font-semibold text-slate-400 group/link text-base"
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1MkYlq4cLPWFTqDk0x4ZWghZNsXPUhxu9/view?usp=drive_link"
               target="_blank"
               rel="noreferrer noopener"
               aria-label="View Full Résumé (opens in a new tab)"
@@ -369,7 +370,7 @@ const ExperienceSection = () => {
               <span>
                 View Full <span className="inline-block">Résumé</span>
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

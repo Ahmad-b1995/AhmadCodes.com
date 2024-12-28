@@ -38,7 +38,7 @@ const NavigationLinks = () => {
             </span>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             className="group flex items-center py-3 cursor-pointer"
             to="projects"
@@ -53,7 +53,7 @@ const NavigationLinks = () => {
               Projects
             </span>
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             className="group flex items-center py-3 cursor-pointer"
