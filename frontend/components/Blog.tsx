@@ -7,10 +7,7 @@ import Link from "next/link";
 
 const Blog = async () => {
   await connection()
-  const articles = await getAllPosts().then((data) => {
-    console.log(data.articles)
-    return data.articles;
-  });
+  const articles = await getAllPosts().then(data => data);
 
   return (
     <NavigationWrapper elementName="blog">

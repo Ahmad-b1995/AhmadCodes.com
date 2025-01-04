@@ -11,8 +11,3 @@ interface ArticleImage {
     description: string;
     image: ArticleImage;
   }
-  
-  interface BlogData {
-    articles: Article[];
-  }
-  
