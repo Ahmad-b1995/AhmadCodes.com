@@ -1,40 +1,51 @@
-import { Injectable } from '@nestjs/common';
-import { CreateArticleDto } from './dto/create-article.dto';
-import { UpdateArticleDto } from './dto/update-article.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Article } from './entities/article.entity';
 
 @Injectable()
 export class ArticleService {
-  create(createArticleDto: CreateArticleDto) {
-    return 'This action adds a new article';
+  constructor(
+    @InjectRepository(Article)
+    private readonly articleRepository: Repository<Article>,
+  ) {}
+
+  async create(
+    title: string,
+    content: string,
+    author: string,
+  ): Promise<Article> {
+    const article = this.articleRepository.create({ title, content, author });
+    return this.articleRepository.save(article);
   }
 
-  findAll() {
-    return {
-      articles: [
-        {
-          id: 1 ,
-          title: "JavaScript Hoisting",
-          description: "JS hoisting rules, pitfalls and uses for let, var, const, and functions",
-          image: {
-            alt: "Tokenomics article",
-            src: "/_next/image?url=%2Fimages%2Fblog%2Ftokenomics.png&w=640&q=75",
-            width: 200,
-            height: 48
-          }
-        }
-      ]
-    };
+  async findAll(): Promise<Article[]> {
+    return this.articleRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} article`;
+  async findOne(id: number): Promise<Article> {
+    const article = await this.articleRepository.findOne({ where: { id } });
+    if (!article) {
+      throw new NotFoundException(`Article with ID ${id} not found.`);
+    }
+    return article;
   }
 
-  update(id: number, updateArticleDto: UpdateArticleDto) {
-    return `This action updates a #${id} article`;
+  async update(
+    id: number,
+    title: string,
+    content: string,
+    author: string,
+  ): Promise<Article> {
+    const article = await this.findOne(id);
+    article.title = title;
+    article.content = content;
+    article.author = author;
+    return this.articleRepository.save(article);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} article`;
+  async remove(id: number): Promise<void> {
+    const article = await this.findOne(id);
+    await this.articleRepository.remove(article);
   }
 }
